@@ -1,0 +1,112 @@
+---
+title: 'Tailwindでブログを実装してみた'
+date: 2022-03-07T15:32:14Z
+lastmod: '2022-03-01'
+tags: ['next-js', 'tailwind', 'guide']
+draft: false
+summary: 'An overview of the new features released in v1 - code block copy, multiple authors, frontmatter layout and more'
+layout: PostSimple
+bibliography: references-data.bib
+canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/new-features-in-v1/
+---
+
+## Overview
+
+A blog created with Next.js and Tailwind.css
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## なぜ Tailwind にしたか
+
+VScode を使いながら Markdown 形式でブログを書ける。あとロードが速い。
+
+Hugo や Ghost,Blogger なども試したが、最終的に nextjs と Tailwind.css を使っていて色々カスタムできる Tailwind に落ち着いた。
+
+## 使用したもの
+
+### テーマ
+
+Tailwind Github: https://github.com/ryuhat/tailwind-blog
+
+### サーバー
+
+Vercel: https://vercel.com/
+
+## python コードサンプル
+
+```python
+def fib():
+    a, b = 0, 1
+    while True:            # First iteration:
+        yield a            # yield 0 to start with and then
+        a, b = b, a + b    # a will now be 1, and b will also be 1, (0 + 1)
+
+for index, fibonacci_number in zip(range(10), fib()):
+     print('{i:3}: {f:3}'.format(i=index, f=fibonacci_number))
+```
+
+## Extend / Customize
+
+`data/siteMetadata.js` - contains most of the site related information which should be modified for a user's need.
+
+`data/authors/default.md` - default author information (required). Additional authors can be added as files in data/authors.
+
+`data/projectsData.js` - data used to generate styled card on the projects page.
+
+`data/headerNavLinks.js` - navigation links.
+
+`data/logo.svg` - replace`````` with your own logo.
+
+`data/blog` - replace with your own blog posts.
+
+`public/static` - store assets such as images and favicons.
+
+`tailwind.config.js and css/tailwind.css` - contain the tailwind stylesheet which can be modified to change the overall look and feel of the site.
+
+`css/prism.css` - controls the styles associated with the code blocks. Feel free to customize it and use your preferred prismjs theme e.g. prism themes.
+
+`components/social-icons` - to add other icons, simply copy an svg file from Simple Icons and map them in index.js. Other icons use heroicons.
+
+`components/MDXComponents.js` - pass your own JSX code or React component by specifying it over here. You can then call them directly in the .mdx or .md file. By default, a custom link and image component is passed.
+
+`layouts` - main templates used in pages.
+
+`pages` - pages to route to. Read the Next.js documentation for more information.
+
+`next.config.js` - configuration related to Next.js. You need to adapt the Content Security Policy if you want to load scripts, images etc. from other domains.
+
+## Theme colors
+
+You can easily modify the theme color by changing the primary attribute in the tailwind config file:
+
+```js:tailwind.config.js
+theme: {
+    colors: {
+      primary: colors.teal,
+      gray: colors.neutral,
+      ...
+    }
+  ...
+}
+```
+
+The primary color attribute should be assigned an object with keys from 50, 100, 200 ... 900 and the corresponding color code values.
+
+Tailwind includes great default color palettes that can be used for theming your own website. Check out [customizing colors documentation page](https://tailwindcss.com/docs/customizing-colors) for the full range of options.
+
+Migrating from v1? You can revert to the previous theme by setting `primary` to `colors.sky` (Tailwind 2.2.2 and above, otherwise `colors.lightBlue`) and changing gray to `colors.gray`.
+
+From v1.1.2+, you can also customize the style of your code blocks easily by modifying the `css/prism.css` stylesheet. Token classnames are compatible with prismjs
+so you can copy and adapt token styles from a prismjs stylesheet e.g. [prism themes](https://github.com/PrismJS/prism-themes).
+
+```js
+async redirects() {
+  return [
+    {
+      source: '/:path/index.xml',
+      destination: '/:path/feed.xml',
+      permanent: true,
+    }
+  ]
+}
+```

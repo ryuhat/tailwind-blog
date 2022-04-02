@@ -1,7 +1,7 @@
 const siteMetadata = {
   title: 'Next.js Starter Blog',
-  author: 'Tails Azimuth',
-  headerTitle: 'TailwindBlog',
+  author: 'Ryu Hat',
+  headerTitle: 'RyuHatBlog',
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'en-us',
   theme: 'system', // system, dark or light
@@ -11,7 +11,7 @@ const siteMetadata = {
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
   email: 'address@yoursite.com',
-  github: 'https://github.com',
+  github: 'https://github.com/ryuhat',
   twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
